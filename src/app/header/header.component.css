@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(to right, #005CA9 0%, #54bbab 100%);
+    height: 4rem;
+}
+
+p{
+    font-family: 'Futura Md Bt', Arial, sans-serif;
+    color: #ffffff;
+    margin: 0 2rem 0 0;
+}
