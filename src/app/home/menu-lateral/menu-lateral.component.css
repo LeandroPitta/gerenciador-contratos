@@ -1,0 +1,28 @@
+:host {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    background: linear-gradient(to bottom, #005CA9 0%, #54bbab 100%);
+    width: 8rem;
+}
+
+div {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Futura Md Bt', Arial, sans-serif;
+    font-size: 1rem;
+    color: #D0E0E3;
+    cursor: pointer;
+}
+
+mat-icon {
+    height: auto;
+    width: auto;
+    color: #D0E0E3;
+    font-size: 2.4rem;
+}
