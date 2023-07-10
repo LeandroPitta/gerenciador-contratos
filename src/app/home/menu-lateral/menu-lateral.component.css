@@ -2,14 +2,21 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: top;
+    justify-content: space-between;
     background: linear-gradient(to bottom, #005CA9 0%, #54bbab 100%);
     width: 8rem;
 }
 
-div {
-    margin-top: 4rem;
+#menu-lateral {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+}
+
+.menu {
+    margin-top: 2.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,4 +32,14 @@ mat-icon {
     width: auto;
     color: #D0E0E3;
     font-size: 2.4rem;
+}
+
+#versao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Futura Bk Bt', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #ffffff;
 }
