@@ -1,5 +1,4 @@
 :host {
-    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,7 +9,7 @@
 mat-button-toggle-group {
     display: flex;
     flex-direction: column;
-    border: none;
+    border: none !important;
 }
 
 mat-button-toggle {
@@ -20,9 +19,10 @@ mat-button-toggle {
     display: flex;
     flex-direction: column;
     font-family: 'Futura Md Bt', Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #ffffff;
     background-color: transparent;
+    border: none !important;
 }
 
 mat-icon {
@@ -30,7 +30,7 @@ mat-icon {
     height: auto;
     width: auto;
     color: #ffffff;
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 .mat-button-toggle-checked {
