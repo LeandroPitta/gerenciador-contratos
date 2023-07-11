@@ -13,13 +13,13 @@ export class HeaderComponent implements OnInit {
     let data = new Date();
     let hora = data.getHours();
     if (hora >= 6 && hora < 12) {
-      this.mensagem = "Bom dia!";
+      this.mensagem = "Bom dia";
     }
     else if (hora >= 12 && hora < 19) {
-      this.mensagem = "Boa tarde!";
+      this.mensagem = "Boa tarde";
     }
     else {
-      this.mensagem = "Boa noite!";
+      this.mensagem = "Boa noite";
     }
   }
 }

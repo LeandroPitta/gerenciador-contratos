@@ -7,31 +7,39 @@
     width: 8rem;
 }
 
-#menu-lateral {
-    margin: 0;
+mat-button-toggle-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: top;
+    border: none;
 }
 
-.menu {
-    margin-top: 2.8rem;
+mat-button-toggle {
+    margin-top: 0.8rem;
+    height: 6rem;
+    width: 8rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-family: 'Futura Md Bt', Arial, sans-serif;
     font-size: 1rem;
-    color: #D0E0E3;
-    cursor: pointer;
+    color: #ffffff;
+    background-color: transparent;
 }
 
 mat-icon {
+    margin: 0.4rem 0 -1.2rem 0;
     height: auto;
     width: auto;
-    color: #D0E0E3;
+    color: #ffffff;
     font-size: 2.4rem;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mat-button-toggle-checked p,
+.mat-button-toggle-checked mat-icon {
+    color: #8FB5BC
 }
 
 #versao {

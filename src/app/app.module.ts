@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { MenuLateralComponent } from './home/menu-lateral/menu-lateral.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
