@@ -1,0 +1,30 @@
+:host {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    height: 16rem;
+    width: 28rem;
+    margin: 0 5rem;
+    align-items: center;    
+}
+
+mat-card-title {
+    margin-top: 1rem;
+    font-family: 'Futura Md Bt', Arial, sans-serif;
+    font-size: 1.6rem;
+}
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Futura Md Bt', Arial, sans-serif;
+    font-size: 2rem;
+}

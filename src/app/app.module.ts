@@ -13,6 +13,9 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 import { PesquisarComponent } from './components/pesquisar/pesquisar.component';
 import { AnaliticoComponent } from './components/analitico/analitico.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AnaliticoComponent } from './components/analitico/analitico.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
