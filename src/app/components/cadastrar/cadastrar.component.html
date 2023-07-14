@@ -1,1 +1,25 @@
-<p>cadastrar works!</p>
+<form class="example-form" (ngSubmit)="cadastrar()">
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Contrato</mat-label>
+            <input matInput [(ngModel)]="contrato" name="contrato" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="nome" name="nome" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Valor do Contrato</mat-label>
+            <input matInput type="number" [(ngModel)]="valorContrato" name="valorContrato">
+          </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Data</mat-label>
+            <input matInput [(ngModel)]="data" name="data" required>
+        </mat-form-field>
+    </p>
+
+    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+    <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+</form>
+
+  

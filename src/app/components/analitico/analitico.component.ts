@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./analitico.component.css']
 })
 export class AnaliticoComponent {
+  isLoading = true;
   displayedColumns: string[] = ['Contrato', 'Nome', 'Valor', 'Data do Contrato'];
   dataSource: any[] = [];
 
@@ -17,9 +18,10 @@ export class AnaliticoComponent {
   }
 
   fetchData() {
-    const apiUrl = 'http://localhost:3000/api/tabela';
+    const apiUrl = 'http://localhost:8080/tabela.asp';
     this.http.get<any[]>(apiUrl).subscribe(data => {
       this.dataSource = data;
+      this.isLoading = false;
     });
   }
 }
