@@ -7,54 +7,31 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./cadastrar.component.css']
 })
 export class CadastrarComponent {
-  contrato: string = '';
+  contrato: number = 0;
   nome: string = '';
-  valorContrato: number | null = null;
-  data: string = '';
-  isSubmitting: boolean = false; // Variável de controle
+  valorContrato: number = 0;
+  dataContrato: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  cadastrar() {
-    if (this.isSubmitting) {
-      return; // Impedir chamadas duplicadas enquanto o envio estiver em andamento
-    }
+  cadastrarContrato() {
+    const formData = new FormData();
+    formData.append('CONTRATO', this.contrato.toString());
+    formData.append('NOME', this.nome);
+    formData.append('VALOR', this.valorContrato.toString());
+    formData.append('DATA_DO_CONTRATO', this.dataContrato);
 
-    const apiUrl = 'http://localhost:8080/cadastro.asp';
-
-    let valorContratoDecimal: number | null = null;
-    if (this.valorContrato !== null) {
-      valorContratoDecimal = parseFloat(this.valorContrato.toFixed(2));
-    }
-
-    const contratoData = {
-      contrato: this.contrato,
-      nome: this.nome,
-      valorContrato: valorContratoDecimal,
-      data: this.data
-    };
-
-    this.isSubmitting = true; // Ativar sinalizador de envio
-
-    this.http.post(apiUrl, contratoData).subscribe(
-      response => {
-        // Lógica de manipulação de resposta após o cadastro ser realizado
-        console.log('Contrato cadastrado com sucesso:', response);
-        this.isSubmitting = false; // Desativar sinalizador de envio após a conclusão
-      },
-      error => {
-        // Lógica de tratamento de erro
-        console.error('Erro ao cadastrar contrato:', error);
-        this.isSubmitting = false; // Desativar sinalizador de envio em caso de erro
-      }
-    );
-  }
-
-  cancelar() {
-    // Lógica para cancelar o cadastro (limpar os campos, redirecionar, etc.)
-    this.contrato = '';
-    this.nome = '';
-    this.valorContrato = null;
-    this.data = '';
+    this.http.post('http://localhost:8080/api/cadastro.asp', formData)
+      .subscribe(
+        (response: any) => {
+          console.log('Contrato cadastrado com sucesso');
+          // Lógica adicional após o cadastro, se necessário
+        },
+        (error: any) => {
+          console.error('Erro ao cadastrar contrato', error);
+          // Lógica de tratamento de erro, se necessário
+        }
+      );
   }
 }
+
