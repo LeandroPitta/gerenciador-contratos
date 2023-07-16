@@ -1,26 +1,22 @@
 <form class="example-form" (ngSubmit)="cadastrarContrato()">
-    <p>
-      <mat-form-field class="example-full-width">
-        <mat-label>Contrato</mat-label>
-        <input matInput required [(ngModel)]="contrato" name="contrato">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput required [(ngModel)]="nome" name="nome">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Valor do Contrato</mat-label>
-        <input matInput type="number" [(ngModel)]="valorContrato" name="valorContrato">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Data</mat-label>
-        <input matInput required [(ngModel)]="dataContrato" name="dataContrato">
-      </mat-form-field>
-    </p>
-  
-    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
-    <button mat-raised-button color="warn">Cancelar</button>
-  </form>
-  
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Contrato</mat-label>
+      <input matInput required [(ngModel)]="contrato" name="contrato">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput required [(ngModel)]="nome" name="nome">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Valor do Contrato</mat-label>
+      <input matInput type="number" [(ngModel)]="valorContrato" name="valorContrato">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Data</mat-label>
+      <input matInput required [(ngModel)]="dataContrato" name="dataContrato">
+    </mat-form-field>
+  </p>
 
-  
+  <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+</form>

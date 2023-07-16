@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastrar',
@@ -12,20 +13,27 @@ export class CadastrarComponent {
   valorContrato: number = 0;
   dataContrato: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   cadastrarContrato() {
-    const formData = new FormData();
-    formData.append('CONTRATO', this.contrato.toString());
-    formData.append('NOME', this.nome);
-    formData.append('VALOR', this.valorContrato.toString());
-    formData.append('DATA_DO_CONTRATO', this.dataContrato);
+    const body = new HttpParams()
+      .set('CONTRATO', this.contrato.toString())
+      .set('NOME', this.nome)
+      .set('VALOR', this.valorContrato.toString())
+      .set('DATA_DO_CONTRATO', this.dataContrato);
 
-    this.http.post('http://localhost:8080/api/cadastro.asp', formData)
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded');
+
+    this.http.post('http://localhost:8080/api/cadastro.asp', body.toString(), { headers })
       .subscribe(
         (response: any) => {
-          console.log('Contrato cadastrado com sucesso');
-          // Lógica adicional após o cadastro, se necessário
+          this.resetForm();
+          this.snackBar.open('Contrato cadastrado com sucesso', 'Fechar', {
+            duration: 10000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
         },
         (error: any) => {
           console.error('Erro ao cadastrar contrato', error);
@@ -33,5 +41,11 @@ export class CadastrarComponent {
         }
       );
   }
-}
 
+  resetForm(): void {
+    this.contrato = 0;
+    this.nome = '';
+    this.valorContrato = 0;
+    this.dataContrato = '';
+  }
+}
