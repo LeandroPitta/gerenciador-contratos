@@ -12,10 +12,12 @@
       <mat-label>Valor do Contrato</mat-label>
       <input matInput type="number" [(ngModel)]="valorContrato" name="valorContrato">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Data</mat-label>
-      <input matInput required [(ngModel)]="dataContrato" name="dataContrato">
-    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Data do contrato</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dataContrato" name="dataContrato">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>  
   </p>
 
   <button mat-raised-button color="primary" type="submit">Cadastrar</button>

@@ -55,6 +55,5 @@ export class ManutencaoComponent implements OnInit {
         // Lógica de tratamento de erro, se necessário
       }
     );
-  }
-
+  }  
 }

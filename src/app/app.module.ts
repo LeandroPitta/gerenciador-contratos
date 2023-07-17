@@ -23,9 +23,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {NgFor} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import { ManutencaoComponent } from './components/manutencao/manutencao.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,10 +56,12 @@ import { ManutencaoComponent } from './components/manutencao/manutencao.componen
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    NgFor,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
-  providers: [],
+  providers: [
+    CurrencyPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
