@@ -1,0 +1,21 @@
+<form class="example-form" (ngSubmit)="atualizarContrato()">
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Contrato</mat-label>
+      <input matInput required [(ngModel)]="contrato" name="contrato" [value]="contratoEncontrado?.CONTRATO">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput required [(ngModel)]="nome" name="nome" [value]="contratoEncontrado?.NOME">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Valor do Contrato</mat-label>
+      <input matInput type="number" [(ngModel)]="valorContrato" name="valorContrato" [value]="contratoEncontrado?.VALOR">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Data</mat-label>
+      <input matInput required [(ngModel)]="dataContrato" name="dataContrato" [value]="contratoEncontrado?.DATA_DO_CONTRATO">
+    </mat-form-field>
+  </p>
+  <button mat-raised-button color="primary" type="submit">Atualizar</button>
+</form>

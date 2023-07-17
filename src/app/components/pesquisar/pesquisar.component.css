@@ -1,0 +1,14 @@
+:host{
+    display: flex;
+    padding: 0 4rem 4rem 0;
+}
+#pesquisa {
+    width: 22rem;
+    margin: 1rem;
+}
+
+button {
+    height: 3.2rem !important;
+    width: 8.8rem !important;
+    margin: 1.2rem !important;
+}

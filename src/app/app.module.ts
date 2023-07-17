@@ -23,6 +23,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {NgFor} from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import { ManutencaoComponent } from './components/manutencao/manutencao.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     InicioComponent,
     CadastrarComponent,
     PesquisarComponent,
-    AnaliticoComponent
+    AnaliticoComponent,
+    ManutencaoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgFor,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
