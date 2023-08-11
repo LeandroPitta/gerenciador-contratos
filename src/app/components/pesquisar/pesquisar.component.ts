@@ -24,7 +24,6 @@ export class PesquisarComponent {
       this.dataSource = data;
       this.isLoading = false;
       this.contratoEncontrado = this.dataSource.find(c => c.CONTRATO == this.numeroContrato);
-      console.log(this.contratoEncontrado);
       const route = this.router.navigate(['manutencao'], {
         state: {
           contratoEncontrado: this.contratoEncontrado

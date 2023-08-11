@@ -15,8 +15,8 @@ interface Contrato {
 })
 export class InicioComponent implements OnInit {
   totalContratos: number = 0;
-  mediaContratos: string = '0';
-  valorTotal: string = '0';
+  valorTotal: number = 0;
+  mediaContratos: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -27,14 +27,8 @@ export class InicioComponent implements OnInit {
   fetchData() {
     this.http.get<Contrato[]>('http://localhost:8080/api/tabela.asp').subscribe(data => {
       this.totalContratos = data.length;
-      const valores = data.map(contrato => contrato.VALOR);
-      const valorTotal = valores.reduce((total, valor) => total + valor, 0);
-      this.valorTotal = this.formatCurrency(valorTotal);
-      this.mediaContratos = this.formatCurrency(valorTotal / this.totalContratos);
+      this.valorTotal = data.map(contrato => contrato.VALOR).reduce((total, valor) => total + valor, 0);
+      this.mediaContratos = this.valorTotal / this.totalContratos;
     });
-  }  
-
-  private formatCurrency(value: number): string {
-    return 'R$ ' + value.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   }
 }

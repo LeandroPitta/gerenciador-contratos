@@ -18,12 +18,11 @@ export class ManutencaoComponent implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
     this.contratoEncontrado = history.state.contratoEncontrado;
-    console.log(this.contratoEncontrado);
     if (this.contratoEncontrado) {
       this.contrato = this.contratoEncontrado.CONTRATO;
       this.nome = this.contratoEncontrado.NOME;
