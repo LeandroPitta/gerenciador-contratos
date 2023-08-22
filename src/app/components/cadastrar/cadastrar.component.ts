@@ -14,15 +14,14 @@ import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from '../../shared/custom-date
   ],
 })
 export class CadastrarComponent {
-  contrato: number = 0;
-  nome: string = '';
-  valorContrato: number = 0;
+  contrato!: number;
+  nome!: string;
+  valorContrato!: number;
   dataContrato: Date | null = null; // Alterada para o tipo Date
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   cadastrarContrato() {
-    console.log(this.dataContrato);
     // Formata a data para o formato "YYYY-MM-DD" antes de enviar para a API
     const formattedDate = this.dataContrato ? this.formatarData(this.dataContrato) : '';
 
@@ -44,7 +43,6 @@ export class CadastrarComponent {
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
           });
-          console.log('Formulário redefinido');
         },
         (error: any) => {
           console.error('Erro ao cadastrar contrato', error);

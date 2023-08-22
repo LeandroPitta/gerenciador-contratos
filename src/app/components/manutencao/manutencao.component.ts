@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ManutencaoComponent implements OnInit {
   contrato: number = 0;
   nome: string = '';
-  valorContrato: number = 0;
+  valorContrato: string = '';
   dataContrato: string = '';
   contratoEncontrado: any = null;
 
@@ -26,16 +26,21 @@ export class ManutencaoComponent implements OnInit {
     if (this.contratoEncontrado) {
       this.contrato = this.contratoEncontrado.CONTRATO;
       this.nome = this.contratoEncontrado.NOME;
-      this.valorContrato = this.contratoEncontrado.VALOR;
+      this.valorContrato = this.formatarParaValorMonetario(this.contratoEncontrado.VALOR);
       this.dataContrato = this.contratoEncontrado.DATA_DO_CONTRATO;
     }
   }
 
   atualizarContrato() {
+    const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, ''); // Remover formatação
+    console.log(valorSemFormatacao)
+    const valorFloat = parseFloat(valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2));
+    console.log (valorFloat);
+
     const body = new HttpParams()
       .set('CONTRATO', this.contrato.toString())
       .set('NOME', this.nome)
-      .set('VALOR', this.valorContrato.toString())
+      .set('VALOR', valorFloat.toString())
       .set('DATA_DO_CONTRATO', this.dataContrato);
 
     const headers = new HttpHeaders()
@@ -54,5 +59,18 @@ export class ManutencaoComponent implements OnInit {
         // Lógica de tratamento de erro, se necessário
       }
     );
-  }  
+  }
+
+  formatarParaValorMonetario(valor: number): string {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  formatarValor(input: HTMLInputElement): void {
+    const valor = input.value.replace(/\D/g, "");
+    const valorFormatado = (Number(valor) / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    input.value = valorFormatado;
+  }
 }
