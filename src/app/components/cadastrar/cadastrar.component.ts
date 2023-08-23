@@ -14,9 +14,9 @@ import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from '../../shared/custom-date
   ],
 })
 export class CadastrarComponent {
-  contrato!: number;
-  nome!: string;
-  valorContrato!: number;
+  contrato: number | null = null;
+  nome: string = '';
+  valorContrato: number | null = null;
   dataContrato: Date | null = null; // Alterada para o tipo Date
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
@@ -26,9 +26,9 @@ export class CadastrarComponent {
     const formattedDate = this.dataContrato ? this.formatarData(this.dataContrato) : '';
 
     const body = new HttpParams()
-      .set('CONTRATO', this.contrato.toString())
+      .set('CONTRATO', this.contrato!.toString())
       .set('NOME', this.nome)
-      .set('VALOR', this.valorContrato.toString())
+      .set('VALOR', this.valorContrato!.toString())
       .set('DATA_DO_CONTRATO', formattedDate);
 
     const headers = new HttpHeaders()
@@ -37,12 +37,12 @@ export class CadastrarComponent {
     this.http.post('http://localhost:8080/api/cadastro.asp', body.toString(), { headers })
       .subscribe(
         (response: any) => {
-          this.resetForm();
-          this.snackBar.open('Contrato cadastrado com sucesso', 'Fechar', {
+          this.snackBar.open('Contrato '+ this.contrato +' cadastrado com sucesso', 'Fechar', {
             duration: 10000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
           });
+          this.resetForm();
         },
         (error: any) => {
           console.error('Erro ao cadastrar contrato', error);
@@ -52,9 +52,9 @@ export class CadastrarComponent {
   }
 
   resetForm(): void {
-    this.contrato = 0;
+    this.contrato = null;
     this.nome = '';
-    this.valorContrato = 0;
+    this.valorContrato = null;
     this.dataContrato = null;
   }
 

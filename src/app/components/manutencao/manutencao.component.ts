@@ -32,10 +32,8 @@ export class ManutencaoComponent implements OnInit {
   }
 
   atualizarContrato() {
-    const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, ''); // Remover formatação
-    console.log(valorSemFormatacao)
+    const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, '');
     const valorFloat = parseFloat(valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2));
-    console.log (valorFloat);
 
     const body = new HttpParams()
       .set('CONTRATO', this.contrato.toString())
@@ -48,11 +46,12 @@ export class ManutencaoComponent implements OnInit {
 
     this.http.post('http://localhost:8080/api/manutencao.asp', body.toString(), { headers }).subscribe(
       (response: any) => {
-        this.snackBar.open('Contrato atualizado com sucesso', 'Fechar', {
+        this.snackBar.open('Contrato '+ this.contrato +' atualizado com sucesso', 'Fechar', {
           duration: 10000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
+        this.router.navigate(['/pesquisar']);
       },
       (error: any) => {
         console.error('Erro ao atualizar contrato', error);

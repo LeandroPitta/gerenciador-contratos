@@ -2,7 +2,7 @@
   <p>
     <mat-form-field class="example-full-width">
       <mat-label>Contrato</mat-label>
-      <input matInput required [(ngModel)]="contrato" name="contrato" [value]="contratoEncontrado?.CONTRATO">
+      <input matInput required name="contrato" [value]="contratoEncontrado?.CONTRATO" [disabled]="true">
     </mat-form-field>    
     <mat-form-field class="example-full-width">
       <mat-label>Nome</mat-label>
@@ -19,5 +19,3 @@
   </p>
   <button mat-raised-button color="primary" type="submit">Atualizar</button>
 </form>
-
-//ARRUMAR O VALOR DO CONTRATO AO ENVIAR PARA O BACKEND
