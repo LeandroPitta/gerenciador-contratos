@@ -2,13 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FormatarMoedaBrl } from '../../services/formatar-moeda-brl.service';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from '../../shared/custom-date-adapter';
 
 @Component({
   selector: 'app-manutencao',
   templateUrl: './manutencao.component.html',
-  styleUrls: ['./manutencao.component.css']
+  styleUrls: ['./manutencao.component.css'],
+  providers: [
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+  ],
 })
+
 export class ManutencaoComponent implements OnInit {
+
   contrato: number = 0;
   nome: string = '';
   valorContrato: string = '';
@@ -19,6 +28,7 @@ export class ManutencaoComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
+    public FormatarMoedaBrl: FormatarMoedaBrl
   ) { }
 
   ngOnInit() {
@@ -33,12 +43,12 @@ export class ManutencaoComponent implements OnInit {
 
   atualizarContrato() {
     const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, '');
-    const valorFloat = parseFloat(valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2));
+    const valorFloat = valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2);
 
     const body = new HttpParams()
       .set('CONTRATO', this.contrato.toString())
       .set('NOME', this.nome)
-      .set('VALOR', valorFloat.toString())
+      .set('VALOR', valorFloat)
       .set('DATA_DO_CONTRATO', this.dataContrato);
 
     const headers = new HttpHeaders()
@@ -46,7 +56,7 @@ export class ManutencaoComponent implements OnInit {
 
     this.http.post('http://localhost:8080/api/manutencao.asp', body.toString(), { headers }).subscribe(
       (response: any) => {
-        this.snackBar.open('Contrato '+ this.contrato +' atualizado com sucesso', 'Fechar', {
+        this.snackBar.open('Contrato ' + this.contrato + ' atualizado com sucesso', 'Fechar', {
           duration: 10000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
@@ -64,12 +74,4 @@ export class ManutencaoComponent implements OnInit {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
-  formatarValor(input: HTMLInputElement): void {
-    const valor = input.value.replace(/\D/g, "");
-    const valorFormatado = (Number(valor) / 100).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    input.value = valorFormatado;
-  }
 }

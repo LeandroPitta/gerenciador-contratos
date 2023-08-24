@@ -10,12 +10,14 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Valor do Contrato</mat-label>
-      <input #inputvalor matInput type="text" [(ngModel)]="valorContrato" name="valorContrato" (input)="formatarValor(inputvalor)">
+      <input #inputvalor matInput type="text" [(ngModel)]="valorContrato" name="valorContrato" (input)="FormatarMoedaBrl.formatarValor(inputvalor)">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Data</mat-label>
-      <input matInput required [(ngModel)]="dataContrato" name="dataContrato" [value]="contratoEncontrado?.DATA_DO_CONTRATO">
-    </mat-form-field>
+    <mat-form-field (click)="picker.open()">
+      <mat-label>Data do contrato</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dataContrato" name="dataContrato" (focus)="picker.open()" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>  
   </p>
   <button mat-raised-button color="primary" type="submit">Atualizar</button>
 </form>

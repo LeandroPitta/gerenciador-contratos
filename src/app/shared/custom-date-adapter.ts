@@ -6,7 +6,7 @@ import { MatDateFormats } from '@angular/material/core';
 export class CustomDateAdapter extends NativeDateAdapter {
   override format(date: Date, displayFormat: string): string {
     if (displayFormat === 'input') {
-      const day = date.getDate();
+      const day = date.getDate() + 1;
       const month = date.getMonth() + 1;
       const year = date.getFullYear();
       return `${day}/${month}/${year}`;
