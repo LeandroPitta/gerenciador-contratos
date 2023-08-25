@@ -21,7 +21,7 @@ export class ManutencaoComponent implements OnInit {
   contrato: number = 0;
   nome: string = '';
   valorContrato: string = '';
-  dataContrato: string = '';
+  dataContrato: Date | null = null;
   contratoEncontrado: any = null;
 
   constructor(
@@ -37,19 +37,21 @@ export class ManutencaoComponent implements OnInit {
       this.contrato = this.contratoEncontrado.CONTRATO;
       this.nome = this.contratoEncontrado.NOME;
       this.valorContrato = this.formatarParaValorMonetario(this.contratoEncontrado.VALOR);
-      this.dataContrato = this.contratoEncontrado.DATA_DO_CONTRATO;
+      this.dataContrato = new Date(this.contratoEncontrado.DATA_DO_CONTRATO);
+      this.dataContrato.setMinutes(this.dataContrato.getMinutes() + this.dataContrato.getTimezoneOffset());
     }
   }
 
   atualizarContrato() {
     const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, '');
     const valorFloat = valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2);
+    const formattedDate = this.dataContrato ? this.formatarData(this.dataContrato) : '';
 
     const body = new HttpParams()
       .set('CONTRATO', this.contrato.toString())
       .set('NOME', this.nome)
       .set('VALOR', valorFloat)
-      .set('DATA_DO_CONTRATO', this.dataContrato);
+      .set('DATA_DO_CONTRATO', formattedDate);
 
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded');
@@ -72,6 +74,17 @@ export class ManutencaoComponent implements OnInit {
 
   formatarParaValorMonetario(valor: number): string {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  formatarData(data: Date): string {
+    const year = data.getFullYear();
+    const month = data.getMonth() + 1;
+    const day = data.getDate();
+    return `${year}-${this.adicionarZeroEsquerda(month)}-${this.adicionarZeroEsquerda(day)}`;
+  }
+
+  adicionarZeroEsquerda(numero: number): string {
+    return numero < 10 ? `0${numero}` : numero.toString();
   }
 
 }
