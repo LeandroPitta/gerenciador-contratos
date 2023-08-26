@@ -10,15 +10,13 @@ export class HeaderComponent implements OnInit {
   mensagem: string = '';
 
   ngOnInit() {
-    let data = new Date();
-    let hora = data.getHours();
+    const hora = new Date().getHours();
+
     if (hora >= 6 && hora < 12) {
       this.mensagem = "Bom dia";
-    }
-    else if (hora >= 12 && hora < 19) {
+    } else if (hora < 19) {
       this.mensagem = "Boa tarde";
-    }
-    else {
+    } else {
       this.mensagem = "Boa noite";
     }
   }

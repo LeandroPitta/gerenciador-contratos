@@ -1,7 +1,8 @@
-:host{
+:host {
     display: flex;
     padding: 0 4rem 4rem 0;
 }
+
 #pesquisa {
     width: 22rem;
     margin: 1rem;
