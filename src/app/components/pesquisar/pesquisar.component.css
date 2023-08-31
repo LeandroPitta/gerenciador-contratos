@@ -3,6 +3,10 @@
     padding: 0 4rem 4rem 0;
 }
 
+* {
+    font-family: "Futura Md Bt", "Arial", sans-serif;
+}
+
 #pesquisa {
     width: 22rem;
     margin: 1rem;
@@ -12,4 +16,7 @@ button {
     height: 3.2rem !important;
     width: 8.8rem !important;
     margin: 1.2rem !important;
+    background-color: #f39200 !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
 }

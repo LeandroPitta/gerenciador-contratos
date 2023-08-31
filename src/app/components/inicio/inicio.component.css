@@ -1,9 +1,8 @@
-.container {
+:host {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: auto;
 }
 
 .top-cards {
@@ -13,7 +12,7 @@
     margin-bottom: 3rem;
 }
 
-.custom-card {
+mat-card {
     height: 16rem;
     width: 26rem;
     margin: 0 4rem 0 4rem;
@@ -21,7 +20,7 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.custom-header {
+mat-card-header {
     background-color: #005CA9;
     color: #fff;
     padding: 16px;
@@ -38,22 +37,17 @@ mat-card-title {
     font-weight: bold;
 }
 
-.custom-content {
+mat-card-content {
     background-color: #F9FBFB;
     border-radius: 10px;
     font-family: 'Futura Md', Arial, sans-serif;
     font-weight: bold;
-    font-size: 3rem;
-    text-align: center;
+    font-size: 2.2rem;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-}
-
-.custom-content p {
-    margin: 0;
 }
 
 .bottom-card {

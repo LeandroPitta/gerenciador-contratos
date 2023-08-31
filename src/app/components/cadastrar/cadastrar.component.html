@@ -1,24 +1,26 @@
-<form class="example-form" (ngSubmit)="cadastrarContrato()">
+<form (ngSubmit)="cadastrarContrato()">
   <p>
-    <mat-form-field class="example-full-width">
+    <mat-form-field id="contrato">
       <mat-label>Contrato</mat-label>
       <input matInput required [(ngModel)]="contrato" name="contrato">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field id="nome">
       <mat-label>Nome</mat-label>
       <input matInput required [(ngModel)]="nome" name="nome">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field id="valor">
       <mat-label>Valor do Contrato</mat-label>
-      <input #inputvalor matInput type="text" [(ngModel)]="valorContrato" name="valorContrato" (input)="FormatarMoedaBrl.formatarValor(inputvalor)">
+      <input #inputvalor matInput required type="text" [(ngModel)]="valorContrato" name="valorContrato"
+        (input)="FormatarMoedaBrl.formatarValor(inputvalor)">
     </mat-form-field>
-    <mat-form-field (click)="picker.open()">
+    <mat-form-field id="data" (click)="picker.open()">
       <mat-label>Data do contrato</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="dataContrato" name="dataContrato" (focus)="picker.open()" readonly>
+      <input matInput required [matDatepicker]="picker" [(ngModel)]="dataContrato" name="dataContrato" (focus)="picker.open()"
+        readonly>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>  
+    </mat-form-field>
   </p>
 
-  <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+  <button mat-raised-button type="submit">Cadastrar</button>
 </form>

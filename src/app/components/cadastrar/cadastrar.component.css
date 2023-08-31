@@ -1,13 +1,38 @@
-.example-form {
+form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
 
-.example-full-width {
+*{
+  font-family: "Futura Md Bt", "Arial", sans-serif;
+}
+
+mat-form-field {
   width: 100%;
 }
 
-td {
-  padding-right: 8px;
+#contrato {
+  width: 14rem;
+}
+
+#nome {
+  width: 30rem;
+}
+
+#valor {
+  width: 14rem;
+  margin-right: 2rem;
+}
+
+#data {
+  width: 14rem;
+}
+
+button[type="submit"] {
+  height: 2.8rem;
+  width: 10rem;
+  background-color: #f39200;
+  color: #ffffff;  
+  font-weight: bold;
 }
