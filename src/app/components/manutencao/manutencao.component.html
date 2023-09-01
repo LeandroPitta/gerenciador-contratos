@@ -6,7 +6,7 @@
     </mat-form-field>
     <mat-form-field id="nome">
       <mat-label>Nome</mat-label>
-      <input matInput required [(ngModel)]="nome" name="nome" [value]="contratoEncontrado?.NOME">
+      <input matInput required [(ngModel)]="nome" name="nome" [value]="contratoEncontrado?.NOME" minlength="3" appApenasLetras>
     </mat-form-field>
     <mat-form-field id="valor">
       <mat-label>Valor do Contrato</mat-label>

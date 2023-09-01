@@ -33,13 +33,21 @@ mat-icon {
     font-size: 2rem;
 }
 
+.mat-button-toggle:hover {
+    border: none;
+    border-radius: 20px;
+}
+
 .mat-button-toggle-checked {
     background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mat-button-toggle-checked p,
 .mat-button-toggle-checked mat-icon {
-    color: #8FB5BC
+    color: #333;
 }
 
 #versao {

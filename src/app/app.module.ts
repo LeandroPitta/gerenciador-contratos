@@ -28,6 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ManutencaoComponent } from './components/manutencao/manutencao.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CurrencyPipe } from '@angular/common';
+import { Numeros9Directive } from './shared/numeros-9.directive';
+import { ApenasLetrasDirective } from './shared/apenas-letras.directive'
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CurrencyPipe } from '@angular/common';
     CadastrarComponent,
     PesquisarComponent,
     AnaliticoComponent,
-    ManutencaoComponent
+    ManutencaoComponent,
+    Numeros9Directive,
+    ApenasLetrasDirective
   ],
   imports: [
     BrowserModule,
