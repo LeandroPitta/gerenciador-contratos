@@ -6,3 +6,7 @@
 * {
   font-family: "Futura Md Bt", "Arial", sans-serif;
 }
+
+th {
+  font-weight: bold;
+}

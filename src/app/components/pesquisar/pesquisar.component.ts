@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pesquisar',
@@ -14,7 +15,7 @@ export class PesquisarComponent {
   contratoEncontrado: any = null;
   numeroContrato: number | null = null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
 
   pesquisarContrato() {
@@ -26,11 +27,17 @@ export class PesquisarComponent {
       this.isLoading = false;
       this.contratoEncontrado = this.dataSource.find(c => c.CONTRATO == this.numeroContrato);
 
-      this.router.navigate(['manutencao'], {
-        state: {
-          contratoEncontrado: this.contratoEncontrado
-        },
-      });
+      if (this.contratoEncontrado) {
+        this.router.navigate(['manutencao'], {
+          state: {
+            contratoEncontrado: this.contratoEncontrado
+          },
+        });
+      } else {
+        this.snackBar.open('Contrato não encontrado', 'Fechar', {
+          duration: 5000
+        });
+      }
     });
   }
 }

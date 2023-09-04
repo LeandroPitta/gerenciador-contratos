@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormatarMoedaBrl } from '../../services/formatar-moeda-brl.service';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from '../../shared/custom-date-adapter';
+import { ValidacaoService } from '../../services/validacao.service';
 
 @Component({
   selector: 'app-manutencao',
@@ -28,7 +29,8 @@ export class ManutencaoComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    public FormatarMoedaBrl: FormatarMoedaBrl
+    public FormatarMoedaBrl: FormatarMoedaBrl,
+    private validacaoService: ValidacaoService
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,18 @@ export class ManutencaoComponent implements OnInit {
   }
 
   atualizarContrato() {
+    // Verificar se os dados são válidos
+    if (!this.validacaoService.validarDados(
+      this.contrato,
+      this.nome,
+      this.valorContrato,
+      this.dataContrato
+    )) {
+      this.snackBar.open('Dados inválidos. Verifique os campos obrigatórios.', 'Fechar', {
+        duration: 5000
+      });
+      return; // Se os dados não forem válidos, exibir mensagem de erro e sair do método
+    }
     const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, '');
     const valorFloat = valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2);
     const formattedDate = this.dataContrato ? this.formatarData(this.dataContrato) : '';
@@ -87,4 +101,7 @@ export class ManutencaoComponent implements OnInit {
     return numero < 10 ? `0${numero}` : numero.toString();
   }
 
+  voltar() {
+    this.router.navigate(['/pesquisar']);
+  }
 }

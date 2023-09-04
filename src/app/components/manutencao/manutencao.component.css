@@ -36,3 +36,12 @@ button[type="submit"] {
   color: #ffffff;
   font-weight: bold;
 }
+
+button[type="button"] {
+  height: 2.8rem;
+  width: 10rem;
+  background-color: #AFCACF;
+  color: #ffffff;
+  font-weight: bold;
+  margin-left: 1rem;
+}
