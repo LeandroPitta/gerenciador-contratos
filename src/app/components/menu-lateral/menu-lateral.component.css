@@ -18,7 +18,7 @@ mat-button-toggle {
     width: 8rem;
     display: flex;
     flex-direction: column;
-    font-family: 'Futura Md Bt', Arial, sans-serif;
+    font-family: 'Futura BK BT', Arial, sans-serif;
     font-size: 0.9rem;
     color: #ffffff;
     background-color: transparent;
@@ -55,7 +55,7 @@ mat-icon {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Futura Bk Bt', Arial, sans-serif;
+    font-family: 'Futura BK BT', Arial, sans-serif;
     font-size: 0.8rem;
     color: #ffffff;
 }

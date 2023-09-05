@@ -21,6 +21,7 @@ export class CadastrarComponent {
   nome: string = '';
   valorContrato: string = '';
   dataContrato: Date | null = null; // Alterada para o tipo Date
+  maxDate: Date = new Date();
 
   constructor(
     private http: HttpClient, 

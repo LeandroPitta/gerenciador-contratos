@@ -1,30 +1,26 @@
-  <div class="top-cards">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Quantidade Total de Contratos</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ totalContratos }} contratos</p>
-      </mat-card-content>
-    </mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Quantidade Total de Contratos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ totalContratos }} contratos</p>
+  </mat-card-content>
+</mat-card>
 
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Média de Valor dos Contratos</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ ('R$ ' + (mediaContratos | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Média de Valor dos Contratos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ ('R$ ' + (mediaContratos | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
+  </mat-card-content>
+</mat-card>
 
-  <div class="bottom-card">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Valor Total de Contratos</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ ('R$ ' + (valorTotal | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Valor Total de Contratos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ ('R$ ' + (valorTotal | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
+  </mat-card-content>
+</mat-card>

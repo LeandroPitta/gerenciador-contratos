@@ -24,6 +24,7 @@ export class ManutencaoComponent implements OnInit {
   valorContrato: string = '';
   dataContrato: Date | null = null;
   contratoEncontrado: any = null;
+  maxDate: Date = new Date();
 
   constructor(
     private router: Router,
