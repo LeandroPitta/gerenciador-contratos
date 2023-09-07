@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormatarMoedaBrl } from '../../services/formatar-moeda-brl.service';
 
 interface Contrato {
   CONTRATO: number;
@@ -13,12 +14,17 @@ interface Contrato {
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
+
 export class InicioComponent implements OnInit {
+
   totalContratos: number = 0;
   valorTotal: number = 0;
   mediaContratos: number = 0;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    public FormatarMoedaBrl: FormatarMoedaBrl
+  ) { }
 
   ngOnInit() {
     this.fetchData();
@@ -31,4 +37,5 @@ export class InicioComponent implements OnInit {
       this.mediaContratos = this.valorTotal / this.totalContratos;
     });
   }
+
 }

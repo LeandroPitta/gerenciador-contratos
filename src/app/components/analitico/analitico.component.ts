@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormatarMoedaBrl } from '../../services/formatar-moeda-brl.service';
 
 @Component({
   selector: 'app-analitico',
@@ -17,7 +18,10 @@ export class AnaliticoComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public FormatarMoedaBrl: FormatarMoedaBrl
+  ) {}
 
   ngOnInit() {
     this.fetchData();

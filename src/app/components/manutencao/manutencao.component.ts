@@ -39,7 +39,7 @@ export class ManutencaoComponent implements OnInit {
     if (this.contratoEncontrado) {
       this.contrato = this.contratoEncontrado.CONTRATO;
       this.nome = this.contratoEncontrado.NOME;
-      this.valorContrato = this.formatarParaValorMonetario(this.contratoEncontrado.VALOR);
+      this.valorContrato = this.FormatarMoedaBrl.formatarParaValorMonetario(this.contratoEncontrado.VALOR);
       this.dataContrato = new Date(this.contratoEncontrado.DATA_DO_CONTRATO);
       this.dataContrato.setMinutes(this.dataContrato.getMinutes() + this.dataContrato.getTimezoneOffset());
     }
@@ -85,10 +85,6 @@ export class ManutencaoComponent implements OnInit {
         // Lógica de tratamento de erro, se necessário
       }
     );
-  }
-
-  formatarParaValorMonetario(valor: number): string {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
   formatarData(data: Date): string {

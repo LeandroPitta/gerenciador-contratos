@@ -12,7 +12,7 @@
     <mat-card-title>Média de Valor dos Contratos</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ ('R$ ' + (mediaContratos | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
+    <p>{{this.FormatarMoedaBrl.formatarParaValorMonetario(this.mediaContratos)}}</p>
   </mat-card-content>
 </mat-card>
 
@@ -21,6 +21,6 @@
     <mat-card-title>Valor Total de Contratos</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ ('R$ ' + (valorTotal | number:'1.2-2')).replace('.', '|').replace(',', '.').replace('|', ',') }}</p>
+    <p>{{this.FormatarMoedaBrl.formatarParaValorMonetario(this.valorTotal)}}</p>
   </mat-card-content>
 </mat-card>
