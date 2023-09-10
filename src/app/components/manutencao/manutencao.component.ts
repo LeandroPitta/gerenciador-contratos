@@ -3,35 +3,31 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormatarMoedaBrl } from '../../services/formatar-moeda-brl.service';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from '../../shared/custom-date-adapter';
 import { ValidacaoService } from '../../services/validacao.service';
+import { FormatarDataApiService } from 'src/app/services/formatar-data-api.service';
 
 @Component({
   selector: 'app-manutencao',
   templateUrl: './manutencao.component.html',
-  styleUrls: ['./manutencao.component.css'],
-  providers: [
-    { provide: DateAdapter, useClass: CustomDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
-  ],
+  styleUrls: ['./manutencao.component.css']
 })
 
 export class ManutencaoComponent implements OnInit {
 
-  contrato: number = 0;
-  nome: string = '';
-  valorContrato: string = '';
-  dataContrato: Date | null = null;
+  contrato!: number;
+  nome!: string;
+  valorContrato!: string;
+  dataContrato!: Date;
   contratoEncontrado: any = null;
   maxDate: Date = new Date();
 
   constructor(
-    private router: Router,
+    public router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
     public FormatarMoedaBrl: FormatarMoedaBrl,
-    private validacaoService: ValidacaoService
+    private validacaoService: ValidacaoService,
+    private FormatarDataApiService: FormatarDataApiService
   ) { }
 
   ngOnInit() {
@@ -60,13 +56,12 @@ export class ManutencaoComponent implements OnInit {
     }
     const valorSemFormatacao = this.valorContrato.replace(/[^\d]/g, '');
     const valorFloat = valorSemFormatacao.slice(0, -2) + '.' + valorSemFormatacao.slice(-2);
-    const formattedDate = this.dataContrato ? this.formatarData(this.dataContrato) : '';
 
     const body = new HttpParams()
       .set('CONTRATO', this.contrato.toString())
       .set('NOME', this.nome)
       .set('VALOR', valorFloat)
-      .set('DATA_DO_CONTRATO', formattedDate);
+      .set('DATA_DO_CONTRATO', this.FormatarDataApiService.formatarData(this.dataContrato));
 
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded');
@@ -85,20 +80,5 @@ export class ManutencaoComponent implements OnInit {
         // Lógica de tratamento de erro, se necessário
       }
     );
-  }
-
-  formatarData(data: Date): string {
-    const year = data.getFullYear();
-    const month = data.getMonth() + 1;
-    const day = data.getDate();
-    return `${year}-${this.adicionarZeroEsquerda(month)}-${this.adicionarZeroEsquerda(day)}`;
-  }
-
-  adicionarZeroEsquerda(numero: number): string {
-    return numero < 10 ? `0${numero}` : numero.toString();
-  }
-
-  voltar() {
-    this.router.navigate(['/pesquisar']);
   }
 }

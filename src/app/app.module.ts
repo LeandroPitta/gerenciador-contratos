@@ -30,6 +30,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CurrencyPipe } from '@angular/common';
 import { Numeros9Directive } from './shared/numeros-9.directive';
 import { ApenasLetrasDirective } from './shared/apenas-letras.directive'
+import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -62,11 +64,13 @@ import { ApenasLetrasDirective } from './shared/apenas-letras.directive'
     HttpClientModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     CurrencyPipe,
-    { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() }
+    { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
 })
